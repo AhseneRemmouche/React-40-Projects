@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 
 import * as constants from '../../data/constants';
 import { Fragment } from 'react';
@@ -7,7 +7,29 @@ import './todo.styles.css';
 const initialState = [...constants.TODOS];
 
 function Todo() {
-    console.log(initialState);
+    const [todos, dispatch] = useReducer(todoReducer, initialState);
+    const todoReducer = (state, action) => {
+        switch (action.type) {
+            case 'ADD_TODO': {
+                return action.name.length
+                    ? [
+                          ...state,
+                          {
+                              id: state.length
+                                  ? Math.max(...state.map((todo) => todo.id)) +
+                                    1
+                                  : 0,
+                              name: action.name,
+                              complete: false,
+                          },
+                      ]
+                    : state;
+            }
+            default: {
+                return state;
+            }
+        }
+    };
     return (
         <Fragment>
             <h2>Todo List</h2>
@@ -32,6 +54,7 @@ function Todo() {
                     </li>
                 ))}
             </ul>
+            <button>CLEAR TODOS</button>
         </Fragment>
     );
 }
