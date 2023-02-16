@@ -1,7 +1,9 @@
 import './product.styles.css';
 function Product({ title, price, image, rating }) {
     return (
-        <div className='product'>
+        <div
+            key={title}
+            className='product'>
             <div className='product__info'>
                 <p>{title}</p>
                 <p className='product__price'>
@@ -17,7 +19,10 @@ function Product({ title, price, image, rating }) {
                 </div>
             </div>
 
-            <img src={image} />
+            <img
+                src={image}
+                alt=''
+            />
 
             <button>Add to Basket</button>
         </div>
