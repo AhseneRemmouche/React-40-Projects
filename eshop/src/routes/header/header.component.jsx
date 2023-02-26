@@ -31,13 +31,13 @@ function Header() {
                 </div>
                 <div className='header__nav'>
                     <Link
-                        to='/signIn'
+                        to='/auth'
                         style={{ textDecoration: 'none' }}>
                         <div className='nav__item'>
                             <span className='nav__itemLineOne'>
                                 Hello Guest
                             </span>
-                            <span className='nav__itemLineTwo'>Sign In</span>
+                            <span className='nav__itemLineTwo'>Auth</span>
                         </div>
                     </Link>
 
